@@ -2,7 +2,7 @@ let y = '';
 let op = null;
 let lastPressedBtn = null;
 /*  Extra functions
- *      1/x, (-), '.', memo, clear, 
+ *      1/x, '.', backspace, PI, x^y, x!, floor/ceil?
  */
 
 const add = (a, b) => a + b;
@@ -16,30 +16,49 @@ const pow = a => a * a;
 const sqrt = a => Math.sqrt(a);
 const sign = a => -a;
 const percent = a => a / 100;
-
 const operate = (op, a, b) => op(a,b);
-
 
 const x = document.querySelector('input');
 const eq = document.querySelector('.eq');
-const pl = document.querySelector('.add');
-const mi = document.querySelector('.sub');
-const mu = document.querySelector('.mul');
-const di = document.querySelector('.div');
+const ac = document.querySelector('.allclear');
+const neg = document.querySelector('.neg');
+
+
+const nums = Array.from(document.querySelectorAll('.num'));
+const ops = Array.from(document.querySelectorAll('.operator'));
 
 x.value = '0';
 
-const nums = Array.from(document.querySelectorAll('.num'));
-nums.forEach(btn => btn.addEventListener('click', () => {
-    if (x.value === '0' || lastPressedBtn.includes('operator') || op === null) {
+// Functions
+function equals() {
+    if (op === null) return;
+    x.value = operate(op,y,+x.value);
+    op = null;
+    y = '';
+}
+
+function allClear() {
+    x.value = '0';
+    op = null;
+    y = '';
+    lastPressedBtn = null;
+}
+
+function numbers() {
+    if (x.value === '0' || lastPressedBtn.includes('operator') ){//|| op === null) {
         x.value = '';
     }
-    x.value += btn.textContent;
-    lastPressedBtn = btn.classList.value;
-}));
+    if (this.textContent === '(-)' && x.value === '') {
+        x.value = '-';
+    } else if (this.textContent === '(-)') {
+        return;
+    } else {
+        x.value += this.textContent;
+    }
+    lastPressedBtn = this.classList.value;
+}
 
-const operators = Array.from(document.querySelectorAll('.operator'));
-operators.forEach(btn => btn.addEventListener('click', () => {
+function operators() {
     // console.log(btn.textContent);
 
     if (y === '') {
@@ -49,15 +68,15 @@ operators.forEach(btn => btn.addEventListener('click', () => {
         y = +x.value;
     }
 
-    switch (btn.textContent) {
+    switch (this.textContent) {
         case '+':    op = add; break;
         case '-':    op = sub; break;
-        case 'x':    op = mul; break;
-        case '/':    op = div; break;
-        case '^2':   op = pow; 
+        case '×':    op = mul; break;
+        case '÷':    op = div; break;
+        case 'x²':   op = pow; 
                      equals(); 
                      break;
-        case 'sqrt': op = sqrt;
+        case '√': op = sqrt;
                      equals();    
                      break;
         case '±':    op = sign;
@@ -67,17 +86,16 @@ operators.forEach(btn => btn.addEventListener('click', () => {
                      equals();    
                      break;
         default: 
-            console.log('Error button: ' + btn.textContent);
+            console.log('Error button: ' + this.textContent);
     }
-        
-    lastPressedBtn = btn.classList.value;
-}));
 
-function equals() {
-    if (op === null) return;
-    x.value = operate(op,y,+x.value);
-    op = null;
-    y = '';
+    lastPressedBtn = this.classList.value;
 }
-eq.addEventListener('click', equals);
 
+// Event Listeners
+nums.forEach(btn => btn.addEventListener('click', numbers));
+ops.forEach(btn => btn.addEventListener('click', operators));
+eq.addEventListener('click', equals);
+ac.addEventListener('click', allClear);
+
+neg.addEventListener('click', numbers);
