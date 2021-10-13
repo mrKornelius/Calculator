@@ -2,6 +2,7 @@ body {
     background-color: #333;
     color: #777;
     height: 90vh;
+    font-size: 0px; /* to eliminate whitespace between buttons*/
 }
 
 .container {
@@ -16,11 +17,16 @@ body {
 .calculator {
     /* display: flex; */
     /* justify-content: center; */
+    padding: 5px;
+    border: 1px solid grey;
+    border-radius: 5px;
+
 }
 
 .row45 {
     display: flex;
 }
+
 
 .row45right {
     display: flex;
@@ -31,7 +37,9 @@ input {
     font-size: 36px;    
     text-align: right;
     border-radius: 15px;
-    width: 255px;
+    width: 250px;
+    background-color: #6e6e6e;
+    margin-bottom: 5px;
 }
 
 /* 
@@ -41,7 +49,7 @@ button, input {
 
 button {
     font-size: 24px;
-    margin: 0px;
+    margin: 1px;
     border-radius: 10px;
     width: 50px;
     height: 50px;
@@ -50,6 +58,39 @@ button {
 button.add {
     height: 100px;
 }
+
+
+.num, .neg, .dot {
+    background-color: #333;
+    color: #666;
+    /* font-size: 30px; */
+}
+
+.num:hover, .neg:hover, .dot:hover {
+    background-color: #444;
+    color: #666;
+}
+
+.eq, .allclear {
+    background-color: #e49450;
+}
+
+.eq:hover, .allclear:hover {
+    background-color: sandybrown;
+}
+
+.operator {
+    background-color: #6e6e6e;
+}
+
+/* .biary, .eq{
+    font-size: 30px;
+} */
+
+.operator:hover {
+    background-color: #5e5e5e;
+}
+
 /* .memclear { 
     font-size: 16px;
 } */
