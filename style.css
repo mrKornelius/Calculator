@@ -87,8 +87,10 @@ button.add {
     background-color: #5e5e5e;
 }
 
+
 .operator.highlight {
     background-color: #5e5e5e;
+    border-style: inset;
 }
 
 /* .memclear { 

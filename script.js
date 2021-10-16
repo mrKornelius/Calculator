@@ -30,8 +30,6 @@ const neg = document.querySelector('.neg');
 const nums = Array.from(document.querySelectorAll('.num'));
 const ops = Array.from(document.querySelectorAll('.operator'));
 
-x.value = '0';
-
 // Functions
 function equals() {
     if (op === null) return;
@@ -94,7 +92,7 @@ function operators() {
         case 'x²':   op = pow; 
                      equals(); 
                      break;
-        case '√': op = sqrt;
+        case '√':    op = sqrt;
                      equals();    
                      break;
         case '±':    op = sign;
@@ -102,9 +100,15 @@ function operators() {
                      break;
         case '%':    op = percent;
                      equals();    
+                     break; 
+        case 'x!':   op = factorial;
+                     equals();    
+                     break;
+        case 'inv':  op = inv;
+                     equals();    
                      break;
         default: 
-            console.log('Error button: ' + this.textContent);
+            console.log('Error on button: ' + this.textContent);
     }
 
     lastPressedBtn = this.classList.value;
