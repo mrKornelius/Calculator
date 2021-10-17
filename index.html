@@ -8,20 +8,20 @@
 <body>
     <div class="container">
         <div class="calculator">
-            <div class="display"><input value="0"></div>
+            <div class="display"><input readonly value="0"></div>
             <div class="row1">
-                <button class="allclear">AC</button>
-                <button class="operator unary">%</button>
-                <button class="operator unary">x!</button>
-                <button class="operator unary">&Sqrt;</button>
-                <button class="operator unary">x²</button>
+                <button class="allclear" id="allclear">AC</button>
+                <button class="operator unary" id="percent">%</button>
+                <button class="operator unary" id="factorial">x!</button>
+                <button class="operator unary" id="sqrt">&Sqrt;</button>
+                <button class="operator unary" id="pow2">x²</button>
             </div>
             <div class="row2">
                 <button class="num">7</button>
                 <button class="num">8</button>
                 <button class="num">9</button>
-                <button class="operator unary">&#xb1</button>
-                <button class="operator unary">inv</button>
+                <button class="operator unary" id="sign">&#xb1</button>
+                <button class="operator unary" id="inverse">inv</button>
 
                 
             </div>
@@ -29,8 +29,8 @@
                 <button class="num">4</button>
                 <button class="num">5</button>
                 <button class="num">6</button>
-                <button class="operator">-</button>
-                <button class="operator">&#xf7;</button>
+                <button class="operator" id="sub">-</button>
+                <button class="operator" id="div">&#xf7;</button>
             </div>
             <div class="row45">
                 <div class="row45left">
@@ -41,16 +41,16 @@
                     </div>
                     <div class="row5">
                         <button class="num">0</button>
-                        <button class="dot">.</button>
-                        <button class="neg">(-)</button>
+                        <button class="dot" id="dot">.</button>
+                        <button class="neg" id="neg">(-)</button>
                     </div>
                 </div>
                 <div class="row45mid">
-                    <button class="operator add">+</button>
+                    <button class="operator add" id="add">+</button>
                 </div>
                 <div class="row45right">
-                    <button class="operator">&#xd7;</button>                    
-                    <button class="eq">=</button>
+                    <button class="operator" id="mul">&#xd7;</button>                    
+                    <button class="eq" id="equals">=</button>
                 </div>
             </div>
         </div>
